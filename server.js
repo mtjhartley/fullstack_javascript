@@ -4,9 +4,12 @@ import express from 'express';
 const server = express();
 
 server.get('/', (req, res) => {
-    res.send("Hello express");
+    res.render("index", {
+        content: "Hello express and EJS!"
+    });
 });
 
+server.set('view engine', 'ejs');
 //for express middleware
 server.use('/api', apiRouter);
 server.use(express.static('public'));
